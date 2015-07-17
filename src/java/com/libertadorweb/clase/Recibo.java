@@ -13,15 +13,19 @@ public class Recibo {
     private int cod;
     private int dni;
     private int monto;
+    private String estado;
 
     public Recibo() {
     }
 
-    public Recibo(int cod, int dni, int monto) {
+    public Recibo(int cod, int dni, int monto, String estado) {
         this.cod = cod;
         this.dni = dni;
         this.monto = monto;
+        this.estado = estado;
     }
+
+      
 
     public int getCod() {
         return cod;
@@ -45,6 +49,13 @@ public class Recibo {
 
     public void setMonto(int monto) {
         this.monto = monto;
+    }
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     

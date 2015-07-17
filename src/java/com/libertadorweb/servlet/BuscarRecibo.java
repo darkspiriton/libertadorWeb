@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import com.libertador.webservices.LibertadorWS;
+import com.libertadorweb.clase.Recibo;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -34,14 +37,29 @@ public class BuscarRecibo extends HttpServlet {
         
         String dni = request.getParameter("dni");
         HttpSession ses = request.getSession();  
-        
+        ses.removeAttribute("lrecibo");
         LibertadorWS port = service.getLibertadorWSPort();
-                
+        String prueba =port.buscarRegistroPago(Integer.parseInt(dni)).toString();
         
-        ses.setAttribute("lrecibo", port.buscarRegistroPago(Integer.parseInt(dni)));
-        RequestDispatcher rd = request.getRequestDispatcher("/buscarRegistro.jsp");
-        rd.forward(request, response);
-        
+        if (prueba.equals("")){
+            RequestDispatcher rd = request.getRequestDispatcher("/buscarRegistro.jsp");
+            rd.forward(request, response);
+        }else {
+            String[] parts = prueba.split("-");
+            
+            int i = parts.length;
+            List <Recibo> l = new <Recibo> ArrayList();
+            if (i>0){        
+                for(int j=0;j<i;j++){               
+                    String[] parts2 = parts[j].toString().split("/");
+                    Recibo r = new Recibo(Integer.parseInt(parts2[0]),Integer.parseInt(parts2[1]),Integer.parseInt(parts2[2]),parts2[3]);
+                    l.add(r);
+                }
+            }
+            ses.setAttribute("lrecibo", l);
+            RequestDispatcher rd = request.getRequestDispatcher("/buscarRegistro.jsp");
+            rd.forward(request, response);
+        }
     }
 
    

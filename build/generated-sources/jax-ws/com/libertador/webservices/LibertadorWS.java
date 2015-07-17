@@ -1,7 +1,6 @@
 
 package com.libertador.webservices;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -48,21 +47,6 @@ public interface LibertadorWS {
 
     /**
      * 
-     * @param dni
-     * @return
-     *     returns java.util.List<java.lang.Object>
-     */
-    @WebMethod(operationName = "BuscarRegistroPago")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "BuscarRegistroPago", targetNamespace = "http://webservices.libertador.com/", className = "com.libertador.webservices.BuscarRegistroPago")
-    @ResponseWrapper(localName = "BuscarRegistroPagoResponse", targetNamespace = "http://webservices.libertador.com/", className = "com.libertador.webservices.BuscarRegistroPagoResponse")
-    @Action(input = "http://webservices.libertador.com/LibertadorWS/BuscarRegistroPagoRequest", output = "http://webservices.libertador.com/LibertadorWS/BuscarRegistroPagoResponse")
-    public List<Object> buscarRegistroPago(
-        @WebParam(name = "dni", targetNamespace = "")
-        int dni);
-
-    /**
-     * 
      * @return
      *     returns java.lang.String
      */
@@ -72,5 +56,20 @@ public interface LibertadorWS {
     @ResponseWrapper(localName = "ImportarRegistroPagoResponse", targetNamespace = "http://webservices.libertador.com/", className = "com.libertador.webservices.ImportarRegistroPagoResponse")
     @Action(input = "http://webservices.libertador.com/LibertadorWS/ImportarRegistroPagoRequest", output = "http://webservices.libertador.com/LibertadorWS/ImportarRegistroPagoResponse")
     public String importarRegistroPago();
+
+    /**
+     * 
+     * @param dni
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "BuscarRegistroPago")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "BuscarRegistroPago", targetNamespace = "http://webservices.libertador.com/", className = "com.libertador.webservices.BuscarRegistroPago")
+    @ResponseWrapper(localName = "BuscarRegistroPagoResponse", targetNamespace = "http://webservices.libertador.com/", className = "com.libertador.webservices.BuscarRegistroPagoResponse")
+    @Action(input = "http://webservices.libertador.com/LibertadorWS/BuscarRegistroPagoRequest", output = "http://webservices.libertador.com/LibertadorWS/BuscarRegistroPagoResponse")
+    public String buscarRegistroPago(
+        @WebParam(name = "dni", targetNamespace = "")
+        int dni);
 
 }

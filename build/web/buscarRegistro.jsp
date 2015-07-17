@@ -59,7 +59,7 @@
 				<article class="partido">
 					<div class="descripcion">
 						<figure class="imagen">
-							<img src="imagenes/foto.png" />
+							<img src="imagenes/logo.png" />
 						</figure>
 						<div class="detalles">
 							<h2 class="titulo">
@@ -69,7 +69,7 @@
 								Codigo: <span class="nombreAutor"><%= r.getCod() %></span>
 							</p>
 							<a href="#" class="horario">Monto: <%= r.getMonto() %> </a>
-							<p class="fecha"><strong></strong>Estado</p>
+							<p class="fecha"><strong></strong><%= r.getEstado() %></p>
 						</div>
 					</div>
 
